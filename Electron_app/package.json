@@ -1,0 +1,21 @@
+{
+  "name": "yahoo_finance",
+  "version": "1.0.0",
+  "description": "yahoo finance vue electron demo",
+  "main": "index.js",
+  "basePath": "./dist",
+  "private": true,
+  "scripts": {
+    "prestart": "cd ../Vue_frontEnd && npm run build && cp dist ../Electron_app",
+    "start": "electron ."
+  },
+  "author": "Ramachandra Joshi",
+  "license": "",
+  "devDependencies": {
+    "electron": "^23.1.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.0"
+  }
+}
