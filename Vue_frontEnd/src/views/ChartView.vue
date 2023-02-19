@@ -1,28 +1,31 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { useStockStore } from "@/stores/stock";
+import { ref, computed } from "vue";
 import { GChart } from "vue-google-charts";
-import { useCounterStore } from "../stores/counter";
-
-const chartData = ref([
-    ["Year", "Sales", "Expenses", "Profit"],
-    ["2014", 1000, 400, 200],
-    ["2015", 1170, 460, 250],
-    ["2016", 660, 1120, 300],
-    ["2017", 1030, 540, 350],
-]);
+import StockDetails from '../components/StockDetails.vue';
+import { getAmountPieChartData, getVolumesPieChartData } from "@/utils/stockTransformer";
+const stock = useStockStore();
+const volumeChartData = computed(() => getVolumesPieChartData(stock.stockData))
+const amountChartData = computed(() => getAmountPieChartData(stock.stockData))
 const chartOptions = ref({
     chart: {
-        title: "Company Performance",
-        subtitle: "Sales, Expenses, and Profit: 2014-2017",
+        title: "Option Performence",
+        subtitle: `Total Gain ${stock.stockData.maxGain}`,
     },
+    width: window.innerWidth,
+    height: 500,
 });
-const store = useCounterStore();
 </script>
 <template>
-    <p>counter is {{ store.count }}</p>
-    <p>{{ store.doubleCount }}</p>
-    <button @click="store.increment">increment</button>
-    <GChart type="LineChart" :data="chartData" :options="chartOptions" />
+    <StockDetails></StockDetails>
+    <v-sheet>
+        <h1 class="v-mt-4">Volumes purchased</h1>
+        <GChart type="PieChart" :data="volumeChartData" :options="chartOptions" />
+    </v-sheet>
+    <v-sheet>
+        <h1 class="v-mt-4">Amount gain</h1>
+        <GChart type="PieChart" :data="amountChartData" :options="chartOptions" />
+    </v-sheet>
 </template>
 
 <style scoped></style>

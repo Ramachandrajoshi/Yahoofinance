@@ -1,13 +1,15 @@
 const NodeCache = require("node-cache");
 
-const cache = new NodeCache({ stdTTL: 15 });
+const cache = new NodeCache();
 const useStockCache = (req, res, next) => {
     const isInTime = isTradingTime();
     try {
         const stock = req.params.stock;
         // dont use cache in trading time. so we get real data which is coming from API
         if (!isInTime && cache.has(stock)) {
-            return res.status(200).json(cache.get(stock));
+            console.log("using cache");
+            res.status(200).json(cache.get(stock));
+            return;
         }
     } catch (e) {
         console.error(e);
@@ -22,6 +24,7 @@ const isTradingTime = () => {
     const now = new Date();
     // Stock market trading is off on  Weekends! (saturday and sunday)
     if (now.getDay() == 6 || now.getDay() == 0) {
+        console.log('its weekend!, no trading today');
         return false;
     }
 

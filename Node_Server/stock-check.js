@@ -1,6 +1,7 @@
 const axios = require("axios");
 
 const getTransactions = async (stock = "AAPL", minVolume = 10) => {
+    console.log("fetching from api", new Date());
     const resp = await axios.get(`https://query2.finance.yahoo.com/v7/finance/options/${stock}`);
     const option = resp.data.optionChain.result[0];
     if (!option) {
