@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
+const { port } = require('./package.json');
 app.use(express.static('dist'))
-app.listen(3000, () => {
-    console.log("app started on port: " + 3000);
+app.listen(port, () => {
+    console.log("app started on port: " + port);
 });

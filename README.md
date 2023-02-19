@@ -12,7 +12,6 @@ but in trading time, server will request the yahoo finance server for real time 
 
 # How to run
 this repo has a multiple application included. each application is inside a filder. so you have to cd in to each application and have to run or build as per your need.
-also we have a script for automated builds.
 
 ## Server
 its nodejs Express server.
@@ -20,11 +19,27 @@ you can run these for server to be up on PORT 4000<br>
 `cd Node_Server`<br>
 `npm install`<br>
 `npm start`<br>
+screenshot:<br>
+![alt Node_Server](./screenshots/node_server.png)
 
 ## Web-Frontend
-its a Vue.js application, runs on PORT: 3000<br>
-`cd yahoo-trading`<br>
+its a Vue.js application, once you run the application it will display the port it is running, (usially: http://127.0.0.1:5173/)<br>
+`cd Vue_frontEnd`<br>
+`npm install`<br>
+`npm run dev`<br>
+<br>
+screenshot:<br>
+![alt Vue_frontEnd](./screenshots/vue_app.png)
+
+## Electron app
+its a Electron application. before running this app please install node modules in Vue_frontEnd<br>
+`cd Vue_frontEnd`<br>
+`npm install`<br>
+`cd ../Electron_app`<br>
 `npm install`<br>
 `npm start`<br>
+<br>
+screenshot:<br>
+![alt Vue_frontEnd](./screenshots/electron_app.png)
 
 !HAPPY TRADING!

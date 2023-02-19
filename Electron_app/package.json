@@ -4,6 +4,7 @@
   "description": "yahoo finance vue electron demo",
   "main": "index.js",
   "basePath": "./dist",
+  "port": 5231,
   "private": true,
   "scripts": {
     "prestart": "cd ../Vue_frontEnd && npm run build && cp -r dist ../Electron_app",

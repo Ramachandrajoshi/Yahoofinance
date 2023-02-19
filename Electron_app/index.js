@@ -1,25 +1,18 @@
 // main.js
 
 // Modules to control application life and create native browser window
-const { app, globalShortcut, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const { spawn } = require('child_process')
-const { name } = require('./package.json');
+const { name, port } = require('./package.json');
 
 const appName = app.getPath("exe");
-const expressAppUrl = "http://127.0.0.1:3000";
+const expressAppUrl = "http://127.0.0.1:" + port;
 let expressPath = "./express-app.js";
 var mainWindow;
 if (appName.endsWith(`${name}.exe`)) {
     expressPath = path.join("./resources/app.asar", expressPath);
 }
-
-function registerGlobalShortcuts() {
-    globalShortcut.register("CommandOrControl+Shift+L", () => {
-        mainWindow.webContents.send("show-server-log");
-    });
-}
-
 
 const createWindow = () => {
     const expressAppProcess = spawn(appName, [expressPath], {
@@ -36,14 +29,7 @@ const createWindow = () => {
         }
     });
     mainWindow.on("closed", () => {
-        mainWindow = null;
         expressAppProcess.kill();
-    });
-    mainWindow.on("focus", () => {
-        registerGlobalShortcuts();
-    });
-    mainWindow.on("blur", () => {
-        globalShortcut.unregisterAll();
     });
 
     ipcMain.handle("get-express-app-url", () => {
@@ -58,7 +44,6 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-    registerGlobalShortcuts();
     createWindow()
 
     app.on('activate', () => {
