@@ -6,7 +6,7 @@
   "basePath": "./dist",
   "private": true,
   "scripts": {
-    "prestart": "cd ../Vue_frontEnd && npm run build && cp dist ../Electron_app",
+    "prestart": "cd ../Vue_frontEnd && npm run build && cp -r dist ../Electron_app",
     "start": "electron ."
   },
   "author": "Ramachandra Joshi",
