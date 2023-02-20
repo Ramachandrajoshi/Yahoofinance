@@ -15,7 +15,7 @@ export const useStockStore = defineStore("stock", () => {
     }
     stockLoading.value = true;
     const result = await fetch(
-      `http://localhost:4000/${stock.value}?min=${10}`
+      `http://192.168.101.198:4000/${stock.value}?min=${10}`
     ).then((r) => r.json());
     stockData.value = result;
     stockLoading.value = false;

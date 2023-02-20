@@ -40,6 +40,18 @@ its a Electron application. before running this app please install node modules 
 `npm start`<br>
 <br>
 screenshot:<br>
-![alt Vue_frontEnd](./screenshots/electron_app.png)
+![alt Electron_app](./screenshots/electron_app.png)
+
+## Cordova app
+its a Cordova application. can built for both android and ios applications. on this demo i have added only android platform.
+before running this app please install node modules in Vue_frontEnd<br>
+`cd Vue_frontEnd`<br>
+`npm install`<br>
+`cd ../Cordova_app`<br>
+`npm install`<br>
+`npm start`<br>
+<br>
+screenshot:<br>
+![alt Cordova_app](./screenshots/Cordova_app.webm)
 
 !HAPPY TRADING!

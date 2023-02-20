@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useStockStore } from "@/stores/stock";
 import router, { CHART_ROUTE, HOME_ROUTE } from "./router";
 const stock = useStockStore();
 const isChartView = ref(false);
+
 function toggleView() {
   isChartView.value = !isChartView.value;
-  if (isChartView.value) {
+
+}
+
+watch(isChartView, function (value) {
+  if (value) {
     router.replace(CHART_ROUTE)
   } else {
     router.replace(HOME_ROUTE)
   }
-}
+}, { immediate: true });
 </script>
 
 <template>
