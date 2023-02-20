@@ -52,7 +52,7 @@ before running this app please install node modules in Vue_frontEnd<br>
 `npm start`<br>
 <br>
 screenshot:<br>
-<video src="https://github.com/Ramachandrajoshi/Yahoofinance/blob/main/screenshots/Cordova_app.mp4?raw=true"></video>
+![alt Cordova_app](https://github.com/Ramachandrajoshi/Yahoofinance/blob/main/screenshots/Cordova_app.mp4?raw=true)
 
 
 !HAPPY TRADING!
