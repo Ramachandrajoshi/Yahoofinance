@@ -52,6 +52,6 @@ before running this app please install node modules in Vue_frontEnd<br>
 `npm start`<br>
 <br>
 screenshot:<br>
-![alt Cordova_app](./screenshots/Cordova_app.webm)
+![alt Cordova_app](./screenshots/Cordova_app.mp4)
 
 !HAPPY TRADING!
